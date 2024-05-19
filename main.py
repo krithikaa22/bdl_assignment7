@@ -89,7 +89,7 @@ def predict_digit(model, img):
 
 ## MNIST digit prediction
 @app.post('/predict')
-async def predict( file: UploadFile = File(...)):
+async def predict(request: Request, file: UploadFile = File(...)):
 
     ## start time of API call
     start_time = time.time() 
@@ -129,7 +129,8 @@ async def predict( file: UploadFile = File(...)):
     # Calculate API running time
     end_time = time.time()
     run_time = end_time - start_time         
-    RUN_TIME_GAUGE.set(run_time)                   
+    REQUEST_COUNTER.labels(client_ip).inc()            
+    RUN_TIME_GAUGE.set(run_time)                  
     
     # Calculate T/L time
     input_length = len(contents)
