@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+prometheus-fastapi-instrumentator
+Pillow
+tensorflow
+numpy
+matplotlib.pyplot
+argparse
+uvicorn
+scipy
+psutil
+os
+time
